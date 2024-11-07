@@ -41,12 +41,16 @@ services:
       - MYSQL_PASSWORD=probando
       - MYSQL_HOST=db_mysql
       - POSTGRES_HOST=db_postgres
+      - DJANGO_SUPERUSER_USERNAME=admin
+      - DJANGO_SUPERUSER_EMAIL=admin@example.com
+      - DJANGO_SUPERUSER_PASSWORD=admin123
     depends_on:
       - db_postgres
       - db_mysql
     restart: on-failure
     command: >
       sh -c "python manage.py migrate &&
+      python manage.py shell < create_superuser.py &&
       python manage.py runserver 0.0.0.0:8000"
 
 volumes:
