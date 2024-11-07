@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><title>Crear Registro</title></head>
+<body>
+    <h1>Crear Registro</h1>
+    <form method="post">
+        {% csrf_token %}
+        Nombre: <input type="text" name="nombre"><br>
+        Descripción: <input type="text" name="descripcion"><br>
+        <button type="submit">Crear</button>
+    </form>
+</body>
+</html>
